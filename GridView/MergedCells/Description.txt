@@ -1,0 +1,1 @@
+﻿This example demonstrates the support of cell merging in Telerik GridView for WPF. RadGridView will automatically merge adjacent cells that have the same value. The cell merging mode can be controlled by setting the MergedCellsDirection property of RadGridView. You can disable cell merging on specific GridViewDataColumn by setting the IsCellMergingEnabled property to false.

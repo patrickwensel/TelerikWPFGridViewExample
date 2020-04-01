@@ -1,0 +1,1 @@
+﻿This example demonstrates how to define custom view and/or edit template for desired column cells.

@@ -1,0 +1,2 @@
+﻿By default, RadGridView's group headers will go out of view once you scroll past them. Thus, in multilevel grouping scenarios, it is sometimes hard to find out which is the exact group you are scrolling through.
+This example demonstrates how to stick the headers of the group to the top until its items are scrolled out of view. You can do this by setting the <b>EnableStickyGroupHeaders</b> property to <b>True</b>. The behavior is only available when using the <b>Flat</b> group render mode.

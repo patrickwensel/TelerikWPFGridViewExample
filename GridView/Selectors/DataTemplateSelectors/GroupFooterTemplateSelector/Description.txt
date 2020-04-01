@@ -1,0 +1,2 @@
+﻿This example illustrates how to apply template conditionally for RadGridView group footers using GroupFooterTemplateSelector column property.
+Tip: scroll down to find a group which average price is greater than $10 to see the difference

@@ -1,0 +1,51 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.MergedCells.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Customers"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Grid>
+		<telerik:RadGridView x:Name="RadGridView1" 
+							 GroupRenderMode="Flat"
+							 ItemsSource="{Binding Products}"
+							 CanUserFreezeColumns="False"
+							 CanUserReorderColumns="False"
+							 CanUserSelect="False"
+							 RowHeight="32"
+							 AutoGenerateColumns="False"
+                             GridLinesVisibility="Both"
+							 ShowGroupPanel="False"
+							 MergedCellsDirection="{Binding SelectedItem, ElementName=mergedCellsDirectionCombo, Mode=TwoWay}">
+			<telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding SupplierID}" IsCellMergingEnabled="{Binding IsChecked, ElementName=enableCellMergingCheckbox, Mode=TwoWay}"
+											Header="SupplierID" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ProductName}" 
+											Header="Product Name" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding UnitsOnOrder}"
+											Header="UnitsOnOrder" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ReorderLevel}"/>
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+	<telerikQuickStart:QuickStart.ConfigurationPanel>
+		<StackPanel Margin="3">
+			<TextBlock Text="Merged Cells Direction:" />
+			<telerik:RadComboBox x:Name="mergedCellsDirectionCombo"
+								 Margin="0,2"
+								 SelectedIndex="1">
+				<telerik:MergedCellsDirection>None</telerik:MergedCellsDirection>
+				<telerik:MergedCellsDirection>Vertical</telerik:MergedCellsDirection>
+				<telerik:MergedCellsDirection>Horizontal</telerik:MergedCellsDirection>
+			</telerik:RadComboBox>
+			<TextBlock Margin="0,10,0,0" Text="Column: SupplierID" />
+			<CheckBox Content="Cell Merging Allowed"
+					  x:Name="enableCellMergingCheckbox"
+					  IsChecked="False"
+					  Margin="0,2" />
+		</StackPanel>
+	</telerikQuickStart:QuickStart.ConfigurationPanel>
+</Examples:GridViewExample>

@@ -1,0 +1,98 @@
+﻿<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.Selection.Example"
+                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+                          xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                          xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.Selection"
+                          xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+    <Examples:GridViewExample.Resources>
+        <local:MyViewModel x:Key="viewModel" />
+        <local:UnitToVisibilityConverter x:Key="converter"/>
+        <local:CellToStringConverter x:Key="cellToStringConverter"/>
+        <telerik:BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
+    </Examples:GridViewExample.Resources>
+    <Grid>
+        <telerik:RadGridView x:Name="GridView" GroupRenderMode="Flat"
+                             ItemsSource="{Binding Customers}"
+                             IsSynchronizedWithCurrentItem="{Binding IsChecked, ElementName=IsSynchronizedWithCurrentItemCheckBox, Mode=TwoWay}"
+                             SelectionUnit="{Binding SelectionUnit, Source={StaticResource viewModel}, Mode=TwoWay}"
+                             SelectionMode="{Binding SelectionMode, Source={StaticResource viewModel}, Mode=TwoWay}"
+                             CanUserSelect="{Binding IsChecked, ElementName=CanUserSelectCheckBox, Mode=TwoWay}"
+                             CanUserSelectColumns="{Binding CanUserSelectColumns, Source={StaticResource viewModel}}"
+                             SelectedItem="{Binding SelectedItem, ElementName=selectedItemCombo, Mode=TwoWay}"
+                             CurrentItem="{Binding SelectedItem, ElementName=currentItemCombo, Mode=TwoWay}" 
+                             local:SelectedCellsBindingBehavior.ListBox="{Binding ElementName=SelectedCellsListBox}"/>
+    </Grid>
+    <telerikQuickStart:QuickStart.ConfigurationPanel>
+        <StackPanel Margin="3">
+            <CheckBox x:Name="CanUserSelectCheckBox"
+                      IsChecked="True"
+                      Content="Can user select items"
+                      Margin="0,2" />
+            <CheckBox x:Name="IsSynchronizedWithCurrentItemCheckBox"
+                      Content="Synchronized with current"
+                      IsChecked="True"
+                      IsThreeState="True"
+                      Margin="0,2" 
+                      Visibility="{Binding SelectionUnit, Converter={StaticResource converter}}"/>
+            <CheckBox x:Name="CanUserSelectColumnsCheckBox"
+                      Content="Can user select columns"                      
+                      Margin="0,2" 
+                      IsChecked="{Binding CanUserSelectColumns, Source={StaticResource viewModel}, Mode=TwoWay}"
+                      Visibility="{Binding IsCanUserSelectColumnsVisible, Converter={StaticResource booleanToVisibilityConverter}, Source={StaticResource viewModel}}"/>
+            <TextBlock Text="Selection unit:"
+                       Margin="0,10,0,0" />
+            <telerik:RadComboBox x:Name="selectionUnitCombo"
+                                 SelectedValuePath="Value"
+                                 ItemsSource="{Binding Units, Source={StaticResource viewModel}}"
+                                 DisplayMemberPath="DisplayName"
+                                 SelectedValue="{Binding SelectionUnit, Source={StaticResource viewModel}, Mode=TwoWay}"
+                                 Margin="0,2" />
+            <TextBlock Text="Selection mode:"
+                       Margin="0,10,0,0" />
+            <telerik:RadComboBox x:Name="selectionModeCombo"
+                                 SelectedValuePath="Value"
+                                 ItemsSource="{Binding Modes, Source={StaticResource viewModel}}"
+                                 DisplayMemberPath="DisplayName"
+                                 SelectedValue="{Binding SelectionMode, Source={StaticResource viewModel}, Mode=TwoWay}"
+                                 Margin="0,2" />
+            <TextBlock Text="Selected items:"
+                       Margin="0,10,0,0" 
+                       Visibility="{Binding SelectionUnit, Converter={StaticResource converter}}"/>
+            <ListBox ItemsSource="{Binding SelectedItems}"
+                     DisplayMemberPath="ContactName"
+                     Margin="0,2"
+                     Height="100" 
+                     Visibility="{Binding SelectionUnit, Converter={StaticResource converter}}"/>
+            <TextBlock Text="Selected cells:"
+                       Margin="0,10,0,0" />
+            <ListBox 
+                x:Name="SelectedCellsListBox"
+                Margin="0,2"
+                Height="100"
+                ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Converter={StaticResource cellToStringConverter}}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TextBlock Text="Selected item:"
+                       Margin="0,10,0,0" 
+                       Visibility="{Binding SelectionUnit, Converter={StaticResource converter}}"/>
+            <telerik:RadComboBox x:Name="selectedItemCombo"
+                                 ItemsSource="{Binding ItemsSource, Mode=TwoWay}"
+                                 DisplayMemberPath="ContactName"
+                                 Margin="0,2" 
+                                 Visibility="{Binding SelectionUnit, Converter={StaticResource converter}}"/>
+            <TextBlock Text="Current item:"
+                       Margin="0,10,0,0" 
+                       Visibility="{Binding SelectionUnit, Converter={StaticResource converter}}"/>
+            <telerik:RadComboBox x:Name="currentItemCombo"
+                                 ItemsSource="{Binding ItemsSource, Mode=TwoWay}"
+                                 DisplayMemberPath="ContactName"
+                                 Margin="0,2" 
+                                 Visibility="{Binding SelectionUnit, Converter={StaticResource converter}}"/>
+        </StackPanel>
+    </telerikQuickStart:QuickStart.ConfigurationPanel>
+</Examples:GridViewExample>

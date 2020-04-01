@@ -1,0 +1,1 @@
+﻿This example illustrates how to enable sorting, filtering and/or grouping for complex objects using IComparable interface.

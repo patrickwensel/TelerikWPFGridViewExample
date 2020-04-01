@@ -1,0 +1,1 @@
+﻿This example demonstrates the new GridViewExpressionColumn, which allows you to display various calculations in the RadGridView itself. The GridViewExpressionColumn can be sorted and grouped like any other. The value of a GridViewExpressionColumn cells updates automatically when a concerned property on the data item changes.

@@ -1,0 +1,1 @@
+﻿This example illustrates how to use the SpreadsheetStreamingExport functionality which allows you to export a milion records of data to the XLSX and CSV formats. RadGridView can be exported with its default styles (like custom Background, FontSize, FontFamily, etc.) by setting ExportDefaultStyle property of GridViewSpreadStreamExportOptions to "true".

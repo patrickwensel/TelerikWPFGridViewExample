@@ -1,0 +1,1 @@
+﻿By default when RadGridView is grouped, the groups are paged instead of the individual item. This example demonstrates how to do paging before grouping. The goal is achieved by inheriting from the QueryableCollectionView class and overriding two methods that handle the grouping and paging logic.

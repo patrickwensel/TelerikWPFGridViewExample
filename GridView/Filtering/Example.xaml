@@ -1,0 +1,78 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.Filtering.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.Filtering"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Client Accounts"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Examples:GridViewExample.Resources>
+		<local:MyViewModel x:Key="MyViewModel" />
+		<local:FilteringModeToCheckBoxVisibilityConverter x:Key="FilteringModeToCheckBoxVisibilityConverter" />
+	</Examples:GridViewExample.Resources>
+	<Grid>
+        <telerik:RadGridView x:Name="radGridView" GroupRenderMode="Flat"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 IsReadOnly="True"
+							 ItemsSource="{Binding Customers}"
+							 AutoGenerateColumns="False">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn Header="Customer ID"
+											DataMemberBinding="{Binding CustomerID}" />
+				<telerik:GridViewDataColumn Header="Company Name"
+											DataMemberBinding="{Binding CompanyName}" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Country}" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding City}" />
+				<telerik:GridViewDataColumn Header="Contact Name"
+											DataMemberBinding="{Binding ContactName}" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+	<telerikQuickStart:QuickStart.ConfigurationPanel>
+		<StackPanel Margin="3">
+			<TextBlock Text="Global Settings:"
+					   FontWeight="Bold" />
+			<CheckBox Content="IsFilteringAllowed"
+					  Margin="4,4,0,0"
+					  IsChecked="{Binding IsFilteringAllowed, Mode=TwoWay}" />
+			<TextBlock Text="Filtering Mode:"
+					   Margin="4,4,0,0" />
+			<telerik:RadComboBox Margin="4,0,0,0"
+								 ItemsSource="{Binding FilteringModes, Source={StaticResource MyViewModel}}"
+								 SelectedValuePath="Value"
+								 DisplayMemberPath="DisplayName"
+								 SelectedValue="{Binding FilteringMode, Mode=TwoWay}" />
+			<TextBlock Text="Column Settings:"
+					   Margin="0,8,0,0"
+					   FontWeight="Bold" />
+			<telerik:RadComboBox Margin="4,4,0,0"
+								 Name="columnsCombo"
+								 ItemsSource="{Binding Columns, Mode=OneWay}"
+								 SelectedItem="{Binding CurrentColumn, Mode=TwoWay}"
+								 DisplayMemberPath="Header" />
+			<CheckBox Content="IsFilterable"
+					  Margin="4,4,0,0"
+					  IsChecked="{Binding CurrentColumn.IsFilterable, Mode=TwoWay}" />
+			<CheckBox Content="IsFilteringDeferred"
+					  Margin="4,4,0,0"
+					  Visibility="{Binding FilteringMode, Converter={StaticResource FilteringModeToCheckBoxVisibilityConverter}}"
+					  IsChecked="{Binding CurrentColumn.IsFilteringDeferred, Mode=TwoWay}" />
+			<CheckBox Content="ShowFieldFilters"
+					  Margin="4,4,0,0"
+					  Visibility="{Binding FilteringMode, Converter={StaticResource FilteringModeToCheckBoxVisibilityConverter}}"
+					  IsChecked="{Binding CurrentColumn.ShowFieldFilters, Mode=TwoWay}" />
+			<CheckBox Content="ShowDistinctFilters"
+					  Margin="4,4,0,0"
+					  Visibility="{Binding FilteringMode, Converter={StaticResource FilteringModeToCheckBoxVisibilityConverter}}"
+					  IsChecked="{Binding CurrentColumn.ShowDistinctFilters, Mode=TwoWay}" />
+			<CheckBox Content="ShowFilterButton"
+					  Margin="4,4,0,0"
+					  Visibility="{Binding FilteringMode, Converter={StaticResource FilteringModeToCheckBoxVisibilityConverter}}"
+					  IsChecked="{Binding CurrentColumn.ShowFilterButton, Mode=TwoWay}" />
+		</StackPanel>
+	</telerikQuickStart:QuickStart.ConfigurationPanel>
+</Examples:GridViewExample>

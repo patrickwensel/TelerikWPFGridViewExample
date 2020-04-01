@@ -1,0 +1,7 @@
+﻿This example illustrates the support of aggregate functions in Telerik GridView. 
+
+The GridView data model provides a predefined set of common aggregate functions, as well support for custom ones. 
+
+To configure an aggregate function, create an <b>AggregateFunction</b> object and add it to the <b>AggregateFunctions</b> collection of the group description. 
+
+The alignment of the aggregate results can be set through the ColumnAggregatesAlignment property.

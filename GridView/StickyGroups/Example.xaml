@@ -1,0 +1,51 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.StickyGroups.Example"
+                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                          xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+                          xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.StickyGroups"
+                          xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+    <telerikQuickStart:QuickStart.ExampleHeader>
+        <TextBlock Text="Client Accounts"
+                   Margin="8" />
+    </telerikQuickStart:QuickStart.ExampleHeader>
+    <Grid>
+        <telerik:RadGridView x:Name="RadGridView"
+                             ItemsSource="{Binding Orders}"
+                             CanUserFreezeColumns="False"
+                             GroupRenderMode="Flat"
+                             RowIndicatorVisibility="Collapsed"
+                             EnableStickyGroupHeaders="{Binding IsChecked, ElementName=EnableStickyGroupHeadersCheckBox, Mode=TwoWay}"
+                             AutoExpandGroups="True"
+                             AutoGenerateColumns="False">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn Header="Order ID"
+                                            DataMemberBinding="{Binding OrderID}" />
+                <telerik:GridViewDataColumn Header="Order Date"
+                                            DataMemberBinding="{Binding OrderDate, StringFormat=d}" />
+                <telerik:GridViewDataColumn Header="Freight"
+                                            DataMemberBinding="{Binding Freight, StringFormat=c}" />
+                <telerik:GridViewDataColumn Header="Ship Name" UniqueName="ShipName"
+                                            DataMemberBinding="{Binding ShipName}" />
+                <telerik:GridViewDataColumn Header="Ship Country" ShowColumnWhenGrouped="False"
+                                            DataMemberBinding="{Binding ShipCountry}"
+                                            UniqueName="ShipCountry" />
+                <telerik:GridViewDataColumn Header="Ship City" ShowColumnWhenGrouped="False"
+                                            DataMemberBinding="{Binding ShipCity}" />
+            </telerik:RadGridView.Columns>
+            <telerik:RadGridView.GroupDescriptors>
+                <telerik:ColumnGroupDescriptor Column="{Binding Columns[\ShipCountry\], ElementName=RadGridView}"
+                                               SortDirection="Ascending" />
+                <telerik:ColumnGroupDescriptor Column="{Binding Columns[\ShipCity\], ElementName=RadGridView}"
+                                               SortDirection="Descending" />
+                <telerik:ColumnGroupDescriptor Column="{Binding Columns[\ShipName\], ElementName=RadGridView}"
+                                               SortDirection="Ascending" />
+            </telerik:RadGridView.GroupDescriptors>
+        </telerik:RadGridView>
+    </Grid>
+    <telerikQuickStart:QuickStart.ConfigurationPanel>
+        <StackPanel Margin="3">
+            <CheckBox x:Name="EnableStickyGroupHeadersCheckBox" IsChecked="True" Content="Enable sticky groups" Margin="3" />
+        </StackPanel>
+    </telerikQuickStart:QuickStart.ConfigurationPanel>
+</Examples:GridViewExample>

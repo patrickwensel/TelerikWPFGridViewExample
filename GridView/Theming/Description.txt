@@ -1,0 +1,1 @@
+﻿This example shows how the GridView can be easily styled using the built-in themes.

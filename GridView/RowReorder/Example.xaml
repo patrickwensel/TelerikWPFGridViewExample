@@ -1,0 +1,52 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.RowReorder.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:local="clr-namespace:Samples.GridView.RowReorder"
+						  xmlns:treeView="clr-namespace:Telerik.Windows.Controls.TreeView;assembly=Telerik.Windows.Controls.Navigation"
+						  xmlns:custom="clr-namespace:Telerik.Windows.Examples.GridView.RowReorder"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<Grid x:Name="root">
+		<Grid.Resources>
+			<ResourceDictionary>
+				<ResourceDictionary.MergedDictionaries>
+					<ResourceDictionary Source="RowStyles.xaml"/>
+				</ResourceDictionary.MergedDictionaries>
+			</ResourceDictionary>
+		</Grid.Resources>
+        <telerik:RadGridView x:Name="RadGridView1" GroupRenderMode="Flat"
+							 ShowGroupPanel="False" CanUserResizeRows="True"
+							 ItemsSource="{Binding Customers}"
+							 AllowDrop="True"
+                             CanUserSortColumns="False"
+                             IsFilteringAllowed="False"
+							 local:RowReorderBehavior.IsEnabled="True"
+							 telerik:ScrollingSettingsBehavior.IsEnabled="True"
+                             telerik:ScrollingSettingsBehavior.ScrollAreaPadding="30"
+                             telerik:ScrollingSettingsBehavior.ScrollStep="24"
+                             telerik:ScrollingSettingsBehavior.ScrollStepTime="00:00:00.05">
+			<telerik:RadGridView.Resources>
+				<DataTemplate x:Key="DraggedItemTemplate">
+					<StackPanel>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="Dragging:" />
+							<TextBlock Text="{Binding CurrentDraggedItem}"
+									   FontWeight="Bold" />
+						</StackPanel>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="{Binding CurrentDropPosition}"
+									   FontWeight="Bold"
+									   MinWidth="45" />
+							<TextBlock Text=", ("
+									   Foreground="Gray" />
+							<TextBlock Text="{Binding CurrentDraggedOverItem}" />
+							<TextBlock Text=")"
+									   Foreground="Gray" />
+						</StackPanel>
+					</StackPanel>
+				</DataTemplate>
+			</telerik:RadGridView.Resources>
+		</telerik:RadGridView>
+	</Grid>
+</Examples:GridViewExample>

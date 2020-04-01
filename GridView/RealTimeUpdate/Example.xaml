@@ -1,0 +1,48 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.RealTimeUpdate.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.RealTimeUpdate"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common"
+						  VerticalAlignment="Center"
+						  HorizontalAlignment="Center">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Stock Updates"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Examples:GridViewExample.Resources>
+		<Style TargetType="telerik:GridViewCell"
+			   x:Key="activeStyle"
+			   BasedOn="{StaticResource GridViewCellStyle}">
+			<Setter Property="Background"
+					Value="{telerik:Windows8Resource ResourceKey=AccentBrush}" />
+			<Setter Property="Foreground"
+					Value="{telerik:Windows8Resource ResourceKey=MainBrush}" />
+		</Style>
+		<Style TargetType="telerik:GridViewCell"
+			   x:Key="defaultStyle"
+			   BasedOn="{StaticResource GridViewCellStyle}" />
+		<local:MyCellStyleSelector x:Key="cellStyleSelector"
+								   DefaultStyle="{StaticResource defaultStyle}"
+								   ActiveStyle="{StaticResource activeStyle}" />
+		<local:MyDataContext x:Key="DataContext" />
+	</Examples:GridViewExample.Resources>
+	<Grid DataContext="{StaticResource DataContext}">
+        <telerik:RadGridView ItemsSource="{Binding Data}" GroupRenderMode="Flat"
+							 AutoGenerateColumns="False"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 Height="500"
+							 Width="600"
+							 IsFilteringAllowed="False">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Name}" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Change, StringFormat=f4}"
+											CellStyleSelector="{StaticResource cellStyleSelector}" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding LastUpdate}"
+											Header="Last Update" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+</Examples:GridViewExample>

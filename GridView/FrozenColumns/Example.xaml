@@ -1,0 +1,69 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.FrozenColumns.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common"
+						  VerticalAlignment="Center"
+						  HorizontalAlignment="Center">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Corporate Directory"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Grid>
+        <telerik:RadGridView x:Name="RadGridView1" GroupRenderMode="Flat"
+							 ItemsSource="{Binding Customers}"
+							 IsFilteringAllowed="False"
+							 AutoGenerateColumns="False"
+							 CanUserFreezeColumns="True"
+							 Height="500" Width="748"
+                             ShowGroupPanel="False"
+                             LeftFrozenColumnCount="{Binding Value, ElementName=LeftFrozenColumnsSlider, Mode=TwoWay}"
+                             RightFrozenColumnCount="{Binding Value, ElementName=RightFrozenColumnsSlider, Mode=TwoWay}"
+                             RightFrozenColumnsSplitterVisibility="Visible">
+			<telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CustomerID}"
+											Header="ID"
+											IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ContactTitle}" 
+											Header="Contact Title"
+											IsGroupable="False"
+											Width="200" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ContactName}" 
+											Header="Contact Name"
+											IsGroupable="False"
+											Width="200" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Phone}" 
+											Header="Phone"
+											IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Fax}" 
+											Header="Fax"
+											IsGroupable="False" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CompanyName}" 
+											Header="Company Name"
+											IsGroupable="False"
+											Width="200" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+	<telerikQuickStart:QuickStart.ConfigurationPanel>
+		<StackPanel Margin="3">
+			<TextBlock Text="Left frozen columns count:" />
+			<telerik:RadSlider HandlesVisibility="Visible" 
+							   x:Name="LeftFrozenColumnsSlider"
+							   Value="2"
+							   SmallChange="1"
+							   Minimum="0" Maximum="6" 
+                               Margin="0, 10, 0, 10"/>
+            <TextBlock Text="Right frozen columns count:" />
+            <telerik:RadSlider HandlesVisibility="Visible"
+                               x:Name="RightFrozenColumnsSlider"
+                               Value="2"
+							   SmallChange="1"
+							   Minimum="0" Maximum="6" 
+                               Margin="0, 10, 0, 10"/>
+            <CheckBox IsChecked="{Binding CanUserFreezeColumns, Mode=TwoWay}"
+					  Content="Can user freeze columns" />
+		</StackPanel>
+	</telerikQuickStart:QuickStart.ConfigurationPanel>
+</Examples:GridViewExample>

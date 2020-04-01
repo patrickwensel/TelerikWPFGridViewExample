@@ -1,0 +1,48 @@
+﻿<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.Theming.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+						  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.Theming">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Theming"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Grid>
+		<Border telerikQuickStart:ThemeAwareBackgroundBehavior.IsEnabled="True" />
+        <telerik:RadGridView x:Name="RadGridView1" GroupRenderMode="Flat"
+							 MinHeight="386"
+							 MaxHeight="500"
+							 RowHeight="45"
+							 ItemsSource="{Binding Employees}"
+							 IsSynchronizedWithCurrentItem="True"
+                             ShowColumnSortIndexes="True"
+							 AutoGenerateColumns="False"
+							 CanUserFreezeColumns="False"
+							 CanUserResizeColumns="False">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewImageColumn Header="Photo"
+											 DataMemberBinding="{Binding Picture}"
+											 ImageHeight="35"
+											 ImageWidth="35"
+											 MinWidth="50" />
+				<telerik:GridViewDataColumn Header="First Name"
+											DataMemberBinding="{Binding FirstName}" />
+				<telerik:GridViewDataColumn Header="Last Name"
+											DataMemberBinding="{Binding LastName}" />
+				<telerik:GridViewDataColumn Header="Title"
+											DataMemberBinding="{Binding Title}" />
+				<telerik:GridViewDataColumn Header="City"
+											DataMemberBinding="{Binding City}" />
+				<telerik:GridViewDataColumn Header="Country"
+											DataMemberBinding="{Binding Country}" />
+				<telerik:GridViewDataColumn Header="Phone"
+											DataMemberBinding="{Binding HomePhone}"
+											Width="*" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+</Examples:GridViewExample>

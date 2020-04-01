@@ -1,0 +1,36 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.HeaderContextMenu.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerikGridViewHeaderMenu="clr-namespace:Telerik.Windows.Controls.GridView.HeaderMenu"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Products"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Grid>
+        <telerik:RadGridView x:Name="RadGridView1" GroupRenderMode="Flat"
+							 ItemsSource="{Binding RandomProducts}"
+							 CanUserFreezeColumns="False"
+							 CanUserReorderColumns="False"
+							 HorizontalAlignment="Center"
+							 AutoGenerateColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 telerikGridViewHeaderMenu:GridViewHeaderMenu.IsEnabled="True">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding ID}"
+											Width="60" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Name}"
+											Width="*" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding UnitPrice}"
+											Header="Unit Price"
+											Width="100" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Date}"
+											Width="170" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Discontinued}"
+											Width="130" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+</Examples:GridViewExample>

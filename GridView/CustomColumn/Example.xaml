@@ -1,0 +1,45 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.CustomColumn.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:my="clr-namespace:Telerik.Windows.Examples.GridView.CustomColumn"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Orders"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Grid>
+        <telerik:RadGridView x:Name="GridView" GroupRenderMode="Flat"
+							 ItemsSource="{Binding Orders}"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 AutoGenerateColumns="False"
+							 ShowGroupPanel="False">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding OrderID}"
+											Header="ID"
+											IsReadOnly="True"
+											MinWidth="45" />
+				<my:DateTimePickerColumn DataMemberBinding="{Binding OrderDate, StringFormat=d}"
+										 Header="Order Date"
+										 TimeInterval="0:30:0"
+										 MinWidth="155" />
+                <my:DateTimePickerColumn DataMemberBinding="{Binding RequiredDate, StringFormat=d}"
+										 Header="Required Date"
+										 TimeInterval="1:0:0"
+										 MinWidth="155" />
+                <my:DateTimePickerColumn DataMemberBinding="{Binding ShippedDate, StringFormat=d}"
+										 Header="Shipped Date"
+										 TimeInterval="2:0:0"
+										 MinWidth="155" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding ShipCity}"
+											Header="Ship City"
+											Width="105" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding ShipCountry}"
+											Header="Ship Country"
+											Width="*" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+</Examples:GridViewExample>

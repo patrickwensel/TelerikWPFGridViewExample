@@ -1,0 +1,2 @@
+﻿This example illustrates the support of aggregate functions in Telerik GridView footer cells. The GridView data model provides a variety of aggregate functions, such as Sum, Count, Min, Max, Average, etc. which can be set directly to desired column using <b>AggregateFunctions</b> property.
+

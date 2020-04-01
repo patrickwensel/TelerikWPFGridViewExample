@@ -1,0 +1,1 @@
+﻿This example illustrates how to style conditionally RadGridView rows using RowStyleSelector GridViewDataControl property.

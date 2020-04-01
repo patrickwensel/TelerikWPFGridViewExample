@@ -1,0 +1,5 @@
+﻿<b>Sorting</b>, <b>grouping</b>, <b>editing</b>, <b>filtering</b>, display of <b>hierarchical</b> data and <b>asynchronous loading</b> of data are all given for the GridView control. A completely different level of interactivity and performance has been added on top of the basics. Telerik  GridView can work with millions of records without compromising its performance and rich feature set.
+<br/>
+This example shows how the GridView can be easily customized to fit perfectly into a variety of business applications. You can see how Telerik <b>GridView</b>, <b>Tab Control</b>, <b>Chart</b> and <b>Hierarchy Child</b> template are bound together seamlessly to accomplish a complex application scenario.
+<br/>
+RadGridView is a part of the <b>Telerik.Windows.Controls.GridView</b> assembly.<br/>

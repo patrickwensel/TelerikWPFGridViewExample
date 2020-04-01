@@ -1,0 +1,7 @@
+﻿This example demonstrates different ScrollModes for the GridView control. There are two available ScrollModes:
+
+<b>Deferred</b> - the RadGridView actually scrolls after mouse button is released. A small tooltip previews the scroll position. The tooltip also can be customized using implicit style for the ScrollPositionIndicator control. This is the default scroll mode.
+
+<b>RealTime</b> - The rows position responds immediately to any movement of the scrollbar thumb. 
+
+To change the scroll mode use the ScrollMode dependency property of the GridView control.

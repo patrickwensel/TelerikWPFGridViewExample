@@ -1,0 +1,51 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.PagingBeforeGrouping.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.PagingBeforeGrouping"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common"
+						  VerticalAlignment="Center"
+						  HorizontalAlignment="Center">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Client Accounts"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Examples:GridViewExample.Resources>
+		<local:MyViewModel x:Key="MyViewModel" />
+	</Examples:GridViewExample.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+        <telerik:RadGridView x:Name="radGridView" GroupRenderMode="Flat"
+							 Grid.Row="0"
+							 ItemsSource="{Binding View, Source={StaticResource MyViewModel}}"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 IsReadOnly="True"
+							 Height="500"
+							 Width="700"
+							 AutoGenerateColumns="False"
+							 AutoExpandGroups="True">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn Header="Customer ID"
+											DataMemberBinding="{Binding CustomerID}" />
+				<telerik:GridViewDataColumn Header="Company Name"
+											DataMemberBinding="{Binding CompanyName}"
+											Width="*" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Country}" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding City}"
+											Width="100" />
+				<telerik:GridViewDataColumn Header="Contact Name"
+											DataMemberBinding="{Binding ContactName}" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+		<telerik:RadDataPager Grid.Row="1"
+							  Source="{Binding View, Source={StaticResource MyViewModel}}"
+							  PageSize="10" FontSize="12" Margin="0,-1,0,0"
+							  IsTotalItemCountFixed="True"
+							  Width="700" />
+	</Grid>
+</Examples:GridViewExample>

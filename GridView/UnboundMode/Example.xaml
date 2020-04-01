@@ -1,0 +1,32 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.UnboundMode.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.UnboundMode"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Products"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Grid>
+        <telerik:RadGridView x:Name="RadGridView1" GroupRenderMode="Flat"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 local:ControlPanelBehavior.Panel="{Binding ElementName=ControlStackPanel}" />
+	</Grid>
+	<telerikQuickStart:QuickStart.ConfigurationPanel>
+		<StackPanel x:Name="ControlStackPanel"
+					Margin="3">
+			<telerik:RadButton Content="Add New Random Item"
+							   Command="{Binding AddCommand, Mode=TwoWay}"
+							   Margin="0,2" />
+			<telerik:RadButton Content="Remove Last Item"
+							   Command="{Binding RemoveCommand, Mode=TwoWay}"
+							   Margin="0,2" />
+			<telerik:RadButton Content="Clear All Items"
+							   Command="{Binding ClearCommand, Mode=TwoWay}"
+							   Margin="0,2" />
+		</StackPanel>
+	</telerikQuickStart:QuickStart.ConfigurationPanel>
+</Examples:GridViewExample>

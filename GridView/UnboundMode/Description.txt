@@ -1,0 +1,3 @@
+﻿This example demonstrates how to work with RadGridView in unbound mode. Unbound mode means that no ItemsSource is defined for RadGridView. Instead you can directly work with its Items property.
+
+Add and remove items to RadGridView with the controls on the right. You can have RadGridView filtered, grouped, and sorted while doing this.

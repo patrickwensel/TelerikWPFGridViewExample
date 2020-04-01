@@ -1,0 +1,1 @@
+﻿This example illustrates how to use GridView ExportToXlsx and ExportToPdf methods for exporting to the corresponding document formats - xlsx and pdf. GridView can be exported with its default styles (like custom Background, FontSize, FontFamily, etc.) by setting ExportDefaultStyle property of GridViewDocumentExportOptions to "true".

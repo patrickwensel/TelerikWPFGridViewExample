@@ -1,0 +1,41 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.CustomSorting.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:behavior="clr-namespace:Telerik.Windows.Controls.GridView.CustomSorting"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common"
+						  VerticalAlignment="Center"
+						  HorizontalAlignment="Center">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Client Accounts"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Grid>
+        <telerik:RadGridView Name="RadGridView1" GroupRenderMode="Flat"
+							 ItemsSource="{Binding Customers}"
+							 Height="500"
+							 Width="700"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 AutoGenerateColumns="False"
+							 behavior:CustomSortingBehavior.IsEnabled="True">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn Header="Customer ID"
+											DataMemberBinding="{Binding CustomerID}"
+											IsCustomSortingEnabled="True" />
+				<telerik:GridViewDataColumn Header="Company Name"
+											DataMemberBinding="{Binding CompanyName}"
+											Width="*" />
+				<telerik:GridViewDataColumn Header="Contact Name"
+											DataMemberBinding="{Binding ContactName}" />
+				<telerik:GridViewDataColumn Header="City"
+											DataMemberBinding="{Binding City}" />
+				<telerik:GridViewDataColumn Header="Country"
+											DataMemberBinding="{Binding Country}" />
+				<telerik:GridViewDataColumn Header="Phone"
+											DataMemberBinding="{Binding Phone}" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+</Examples:GridViewExample>

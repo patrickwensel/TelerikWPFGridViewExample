@@ -1,0 +1,3 @@
+﻿This example demonstrates binding Telerik GridView to different data sources. The binding sources supported by the grid unclude: .NET objects (also with property paths), data tables and XAML specific data sources (like ObservableCollection).
+<br/>
+Different data sources can be selected from the right panel. Since the <b>AutoGenerateColumns</b> property is set to true by default, the columns are created automatically. The Search as You Type functionality works with Dynamic and XML objects.

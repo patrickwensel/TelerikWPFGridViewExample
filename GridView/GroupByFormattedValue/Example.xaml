@@ -1,0 +1,44 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.GroupByFormattedValue.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.GroupByFormattedValue">
+	<Grid>
+		<Grid.Resources>
+			<local:ContactTitleConverter x:Key="ContactTitleConverter" />
+		</Grid.Resources>
+        <telerik:RadGridView x:Name="RadGridView1" GroupRenderMode="Flat"
+							 ItemsSource="{Binding Customers}"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 AutoExpandGroups="True"
+							 AutoGenerateColumns="False"
+							 ColumnWidth="*">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn Header="CustomerID"
+											DataMemberBinding="{Binding CustomerID}" />
+				<telerik:GridViewDataColumn Header="Company"
+											DataMemberBinding="{Binding CompanyName}" />
+				<telerik:GridViewDataColumn Header="Name"
+											DataMemberBinding="{Binding ContactName}" />
+				<telerik:GridViewDataColumn Header="Title"
+											DataMemberBinding="{Binding ContactTitle}" />
+				<telerik:GridViewDataColumn Header="Category"
+											IsReadOnly="True"
+											UniqueName="ContactTitleWithConverter"
+											DataMemberBinding="{Binding ContactTitle, Converter={StaticResource ContactTitleConverter}}" />
+				<telerik:GridViewDataColumn Header="Country"
+											DataMemberBinding="{Binding Country}"
+											UniqueName="Country" />
+				<telerik:GridViewDataColumn Header="City"
+											DataMemberBinding="{Binding City}" />
+			</telerik:RadGridView.Columns>
+			<telerik:RadGridView.GroupDescriptors>
+				<telerik:ColumnGroupDescriptor Column="{Binding Columns[\ContactTitleWithConverter\], ElementName=RadGridView1}"
+											   SortDirection="Ascending" />
+			</telerik:RadGridView.GroupDescriptors>
+		</telerik:RadGridView>
+	</Grid>
+</Examples:GridViewExample>

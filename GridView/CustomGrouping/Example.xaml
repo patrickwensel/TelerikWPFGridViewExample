@@ -1,0 +1,27 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.CustomGrouping.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:behavior="clr-namespace:Telerik.Windows.Controls.GridView.CustomGrouping"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Client Accounts"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Grid>
+        <telerik:RadGridView Name="RadGridView1" GroupRenderMode="Flat"
+							 ItemsSource="{Binding RandomProducts}" AutoExpandGroups="True"
+                             AutoGenerateColumns="False"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 behavior:CustomGroupingBehavior.IsEnabled="True">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ID}" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Name}"  Width="*" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding UnitPrice, StringFormat=c}" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Date, StringFormat=d}"/>
+            </telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+</Examples:GridViewExample>

@@ -1,0 +1,1 @@
+﻿This example demonstrates GridView column properties. <b>Grouping</b>, <b>Filtering</b>, <b>Editing</b> and <b>Sorting</b> can be set for each column individually.

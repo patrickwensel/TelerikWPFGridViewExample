@@ -1,0 +1,2 @@
+﻿This example demonstrates how to use <b>IsExpandedBinding</b> and <b>IsExpandableBinding</b> properties to synchronize the expanded/expandable states of <b>RadGridView</b> with your view-model.
+

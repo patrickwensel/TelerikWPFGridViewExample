@@ -1,0 +1,6 @@
+﻿This example demonstrates how to create a custom bound column which can be used in RadGridView. This is applicable when you want to create a custom editor for this specific column.
+
+The custom editor in our case is Telerik RadDateTimePicker control. It allows to edit time part of a DateTime value.
+
+The custom bound column derives from GridViewBoundColumnBase and overrides CreateCellEditElement returning our custom editor. Please note the way we create the binding 
+for this control to enable validation. In addition example demonstrates how you can add custom property to the column (TimeInterval) and transfer it to "view" or "editor" element.

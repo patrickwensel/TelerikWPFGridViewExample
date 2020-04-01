@@ -1,0 +1,3 @@
+﻿This example demonstrates the custom sorting capabilities of the Telerik GridView. The Sorting event is fired every time when new sorting criteria is about to be applied.  That allows the programmer to alter the sorting behaviour. 
+
+The example above shows how the items source is re-read from the database when the "Customer ID" column header is clicked. Items are sorted by our custom code and the sorting event is marked as handled to prevent execution of the RadGridView default sorting logic.

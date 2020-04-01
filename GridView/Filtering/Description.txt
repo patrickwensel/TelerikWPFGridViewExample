@@ -1,0 +1,1 @@
+﻿This example demonstrates the different filtering configurations that RadGridView supports. You can configure RadGridView as a whole or configure each column individually.

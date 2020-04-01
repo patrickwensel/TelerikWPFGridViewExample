@@ -1,0 +1,195 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.ExportingExcelML.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:sys="clr-namespace:System;assembly=mscorlib"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.ExportingExcelML"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common"
+						  xmlns:propertyGrid="clr-namespace:Telerik.Windows.Controls.Data.PropertyGrid;assembly=Telerik.Windows.Controls.Data"
+						  VerticalAlignment="Center"
+						  HorizontalAlignment="Center">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Customizng ExcelML export"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Examples:GridViewExample.Resources>
+		<local:ExportingModel x:Key="context" />
+	</Examples:GridViewExample.Resources>
+	<Grid>
+		<telerik:RadGridView AutoExpandGroups="True" GroupRenderMode="Flat"
+							 x:Name="RadGridView1"
+							 ItemsSource="{Binding RandomProducts}"
+							 ShowColumnFooters="True"
+							 ShowGroupFooters="True"
+							 AutoGenerateColumns="False"
+							 IsReadOnly="True"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 CanUserResizeColumns="False"
+							 Width="650"
+							 Height="500">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn Header="ID"
+											DataMemberBinding="{Binding ID}">
+					<telerik:GridViewDataColumn.AggregateFunctions>
+						<telerik:CountFunction ResultFormatString="{}Count: {0}" />
+					</telerik:GridViewDataColumn.AggregateFunctions>
+				</telerik:GridViewDataColumn>
+				<telerik:GridViewDataColumn Width="*"
+											Header="Name"
+											DataMemberBinding="{Binding Name}">
+					<telerik:GridViewDataColumn.AggregateFunctions>
+						<telerik:MinFunction FunctionName="MinUnitPrice"
+											 ResultFormatString="{}Min: {0:c}"
+											 SourceField="UnitPrice" />
+					</telerik:GridViewDataColumn.AggregateFunctions>
+				</telerik:GridViewDataColumn>
+				<telerik:GridViewDataColumn Width="150"
+											Header="Unit Price"
+											TextAlignment="Right"
+											DataMemberBinding="{Binding UnitPrice, StringFormat=c}">
+					<telerik:GridViewDataColumn.AggregateFunctions>
+						<telerik:SumFunction ResultFormatString="{}Sum: {0:c}"
+											 SourceField="UnitPrice" />
+						<telerik:AverageFunction ResultFormatString="{}Average: {0:c}"
+												 SourceField="UnitPrice" />
+					</telerik:GridViewDataColumn.AggregateFunctions>
+					<telerik:GridViewDataColumn.Footer>
+						<StackPanel Orientation="Vertical"
+									Margin="5,0">
+							<telerik:AggregateResultsList ItemsSource="{Binding}"
+														  VerticalAlignment="Center"
+														  Grid.Column="4">
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<StackPanel Orientation="Horizontal"
+													VerticalAlignment="Center">
+											<TextBlock VerticalAlignment="Center"
+													   Text="{Binding Caption}" />
+											<TextBlock VerticalAlignment="Center"
+													   Text="{Binding FormattedValue}" />
+										</StackPanel>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<StackPanel Orientation="Vertical" />
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+							</telerik:AggregateResultsList>
+						</StackPanel>
+					</telerik:GridViewDataColumn.Footer>
+					<telerik:GridViewDataColumn.GroupFooterTemplate>
+						<DataTemplate>
+							<telerik:AggregateResultsList ItemsSource="{Binding}"
+														  VerticalAlignment="Center"
+														  Grid.Column="4">
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<StackPanel Orientation="Horizontal"
+													VerticalAlignment="Center">
+											<TextBlock VerticalAlignment="Center"
+													   Text="{Binding Caption}" />
+											<TextBlock VerticalAlignment="Center"
+													   Text="{Binding FormattedValue}" />
+										</StackPanel>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<StackPanel Orientation="Vertical" />
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+							</telerik:AggregateResultsList>
+						</DataTemplate>
+					</telerik:GridViewDataColumn.GroupFooterTemplate>
+				</telerik:GridViewDataColumn>
+				<telerik:GridViewDataColumn Width="150"
+											Header="Date"
+											DataMemberBinding="{Binding Date, StringFormat=d}"
+											TextAlignment="Right">
+					<telerik:GridViewDataColumn.AggregateFunctions>
+						<telerik:MinFunction ResultFormatString="{}Min: {0:d}"
+											 SourceField="Date" />
+						<telerik:MaxFunction ResultFormatString="{}Max: {0:d}"
+											 SourceField="Date" />
+					</telerik:GridViewDataColumn.AggregateFunctions>
+				</telerik:GridViewDataColumn>
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+	<telerikQuickStart:QuickStart.ConfigurationPanel>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical"
+							Margin="0 5">
+                <TextBlock VerticalAlignment="Center" Text="Row height" Margin="0 0 0 5"/>
+                <telerik:RadNumericUpDown VerticalAlignment="Center"
+										  Minimum="0" 
+                                          Value="{Binding RowHeight, Source={StaticResource context}, Mode=TwoWay}"
+                                          Margin="0 0 0 5" />
+                <TextBlock VerticalAlignment="Center" Text="Column Export Options" Margin="0 0 0 5" />
+                <telerik:RadTabControl ItemsSource="{Binding Columns, Source={StaticResource context}}">
+                    <telerik:RadTabControl.ContentTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin" Value="5" />
+                                    </Style>
+                                </Grid.Resources>
+                                <TextBlock Text="Font" 
+									   Grid.Row="0" Grid.Column="0"/>
+                                <TextBlock Text="Font Size" 
+									   Grid.Row="1" Grid.Column="0"/>
+                                <TextBlock Text="Foreground" 
+									   Grid.Row="2" Grid.Column="0"/>
+                                <TextBlock Text="Background" 
+									   Grid.Row="3" Grid.Column="0"/>
+                                <telerik:RadComboBox ItemsSource="{Binding Fonts}" 
+												 SelectedValue="{Binding Font, Mode=TwoWay}"
+												 SelectedValuePath="Value" 
+												 DisplayMemberPath="DisplayName" 
+												 Grid.Row="0" Grid.Column="1"
+												 Margin="5"/>
+                                <telerik:RadNumericUpDown Value="{Binding FontSize, Mode=TwoWay}" 
+                                         Grid.Row="1" Grid.Column="1" Margin="5"/>
+                                <telerik:RadColorPicker SelectedColor="{Binding FontColor, Mode=TwoWay}"
+													Grid.Row="2" Grid.Column="1" 
+													Margin="5"/>
+                                <telerik:RadColorPicker SelectedColor="{Binding InteriorColor, Mode=TwoWay}"
+													Grid.Row="3" Grid.Column="1" 
+													Margin="5"/>
+                                <telerik:RadButton  Command="{Binding ShowOptionsCommand, Source={StaticResource context}}"
+												CommandParameter="{Binding}"
+												Content="Show more options"
+												Margin="5"
+												Grid.Row="4" Grid.ColumnSpan="2"/>
+                            </Grid>
+                        </DataTemplate>
+                    </telerik:RadTabControl.ContentTemplate>
+                </telerik:RadTabControl>
+            </StackPanel>
+            <telerik:RadButton Content="Export" Grid.Row="1"
+							   Command="{Binding ExportCommand, Source={StaticResource context}}"
+							   CommandParameter="{Binding}"
+							   Margin="0 10 0 0" />
+		</Grid>
+	</telerikQuickStart:QuickStart.ConfigurationPanel>
+</Examples:GridViewExample>

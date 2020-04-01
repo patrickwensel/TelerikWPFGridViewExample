@@ -1,0 +1,22 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.Localization.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.Localization"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<Grid x:Name="LayoutRoot"
+		  local:ConfigurationPanelBehavior.ControlPanel="{Binding ElementName=ControlStackPanel}"></Grid>
+	<telerikQuickStart:QuickStart.ConfigurationPanel>
+		<StackPanel Margin="3"
+					x:Name="ControlStackPanel">
+			<TextBlock Text="Select language:" />
+			<telerik:RadComboBox ItemsSource="{Binding LanguageChoices}"
+								 SelectedValue="{Binding CurrentLanguage, Mode=TwoWay}" />
+			<TextBlock Text="Select flow direction:"
+					   Margin="0,10,0,0" />
+			<telerik:RadComboBox ItemsSource="{Binding DirectionChoices}"
+								 SelectedValue="{Binding CurrentDirection, Mode=TwoWay}" />
+		</StackPanel>
+	</telerikQuickStart:QuickStart.ConfigurationPanel>
+</Examples:GridViewExample>

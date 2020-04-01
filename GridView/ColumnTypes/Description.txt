@@ -1,0 +1,11 @@
+﻿Telerik RadGridView supports a large set of column types such as:
+
+<br/><b>◦ GridViewColumn</b> - this is the base column class. Each column used by the RadGridView must derive directly or indirectly from this class. 
+<br/><b>◦ GridViewBoundColumnBase</b> - this a base class from which the other data columns derive. 
+<br/><b>◦ GridViewDataColumn</b> - derives from GridViewBoundColumnBase and extends its functionality with data binding. 
+<br/><b>◦ GridViewComboBoxColumn</b> - derives from GridViewBoundColumnBase class with the addition that in edit mode you have a ComboBox control to choose the value of the cell from. 
+<br/><b>◦ GridViewImageColumn</b> - provides you with an easy way to display images inside the column cells, without having to template the cell. 
+<br/><b>◦ GridViewSelectColumn</b> - derives from GridViewColumn class and allows you to select rows via checkboxes. 
+<br/><b>◦ GridViewHyperlinkColumn</b> - used to easily display content that should be in the form of a hyperlink. 
+<br/><b>◦ GridViewDynamicHyperlinkColumn</b> - allows you to display content that represents a hyperlink. It also provides you with a way to easily format the URLs. 
+<br/><b>◦ GridViewToggleRowDetailsColumn</b> - allows you to toggle the visibility of the row details when available.

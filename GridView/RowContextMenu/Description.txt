@@ -1,0 +1,1 @@
+﻿This example demonstrates how to define context menu for every grid row in the GridView.

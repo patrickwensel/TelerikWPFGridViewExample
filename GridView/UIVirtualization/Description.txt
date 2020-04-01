@@ -1,0 +1,2 @@
+﻿This example illustrates the advanced UI virtualization capabilities of RadGridView with many rows and columns. 
+

@@ -1,0 +1,42 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.Hierarchy.SelfReference.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<Grid>
+		<telerik:RadGridView x:Name="RadGridView1"
+							 ColumnWidth="*" GroupRenderMode="Flat"
+							 ItemsSource="{Binding Employees}"
+							 RowLoaded="RadGridView1_RowLoaded"
+							 GridLinesVisibility="None"
+							 DataLoading="RadGridView1_DataLoading"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 IsReadOnly="True"
+							 AutoGenerateColumns="False">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding EmployeeID}" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding FirstName}" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding LastName}" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Title}" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Country}" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Region}" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding City}" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding HomePhone}" />
+			</telerik:RadGridView.Columns>
+			<telerik:RadGridView.ChildTableDefinitions>
+				<telerik:GridViewTableDefinition>
+					<telerik:GridViewTableDefinition.Relation>
+						<telerik:TableRelation IsSelfReference="True">
+							<telerik:TableRelation.FieldNames>
+								<telerik:FieldDescriptorNamePair ParentFieldDescriptorName="EmployeeID"
+																 ChildFieldDescriptorName="ReportsTo" />
+							</telerik:TableRelation.FieldNames>
+						</telerik:TableRelation>
+					</telerik:GridViewTableDefinition.Relation>
+				</telerik:GridViewTableDefinition>
+			</telerik:RadGridView.ChildTableDefinitions>
+		</telerik:RadGridView>
+	</Grid>
+</Examples:GridViewExample>

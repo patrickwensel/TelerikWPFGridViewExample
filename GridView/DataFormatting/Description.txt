@@ -1,0 +1,3 @@
+﻿This example illustrates the custom data formatting supported by Telerik GridView. This allows displaying of the data as currency, percentage or any other format. The data formatting is set by the GridViewDataColumn.DataFormatString property to a standard .NET formatting string. 
+
+Note that if the property is set in XAML, the curly brackets of the format string should be avoided by adding {} at the beginning.

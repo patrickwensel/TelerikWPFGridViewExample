@@ -1,0 +1,2 @@
+﻿This example demonstrates frozen columns feature of RadGridView. You can freeze desired number of columns by setting the LeftFrozenColumnCount and RightFrozenColumnCount properties.
+In order the splitter of the right one to be visible, the RightFrozenColumnsSplitterVisibility needs to be set to Visible.

@@ -1,0 +1,10 @@
+﻿This example shows how to create custom aggregate function using the extensiblity API of Telerik LINQ based data engine adding.<br/>
+It illustrates a standard deviation function calculated for all product grouped by discount.<br/>
+ 
+The standard deviation is calculated as follows:<br/>
+1. Calculate the average of the values.<br/>
+2. Subtract each value from the average.<br/>
+3. Take the result to the second power.<br/>
+4. Sum up the result of steps 1-3 over all of the values.<br/>
+5. Divides the sum by the number of values.<br/>
+6. Take the square root of the result.<br/>

@@ -1,0 +1,1 @@
+﻿This example demonstrates paging using the RadDataPager control. QueryableCollectionView is used as a bridge between the RadGridView and used DataPager controls.

@@ -1,0 +1,92 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.Selectors.DataTemplateSelectors.HierarchyChildTemplateSelector.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:sys="clr-namespace:System;assembly=mscorlib"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Corporate Directory"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Grid>
+		<Grid.Resources>
+            <telerik:Windows8Colors x:Key="Windows8Colors" />
+			<SolidColorBrush x:Key="AccentBrush"
+							 Color="{Binding Source={StaticResource Windows8Colors}, Path=Palette.AccentColor}" />
+			<DataTemplate x:Key="MexicoTemplate">
+                <telerik:RadGridView ShowGroupPanel="False" GroupRenderMode="Flat"
+									 IsReadOnly="True"
+									 ItemsSource="{Binding Orders}"
+									 CanUserFreezeColumns="False"
+									 RowIndicatorVisibility="Collapsed"
+									 AutoGenerateColumns="False"
+									 Background="{telerik:Windows8Resource ResourceKey=AccentBrush}">
+					<telerik:RadGridView.Columns>
+						<telerik:GridViewDataColumn Header="OrderID"
+													DataMemberBinding="{Binding OrderID}" />
+						<telerik:GridViewDataColumn Header="CustomerID"
+													DataMemberBinding="{Binding CustomerID}" />
+						<telerik:GridViewDataColumn Header="OrderDate"
+													DataMemberBinding="{Binding OrderDate, StringFormat=d}" />
+					</telerik:RadGridView.Columns>
+				</telerik:RadGridView>
+			</DataTemplate>
+			<DataTemplate x:Key="OtherCountriesTemplate">
+				<telerik:RadGridView ItemsSource="{Binding Orders}"
+									 AutoGenerateColumns="False"
+									 CanUserFreezeColumns="False"
+									 RowIndicatorVisibility="Collapsed">
+					<telerik:RadGridView.Columns>
+						<telerik:GridViewDataColumn Header="OrderID"
+													DataMemberBinding="{Binding OrderID}" />
+						<telerik:GridViewDataColumn Header="CustomerID"
+													DataMemberBinding="{Binding CustomerID}" />
+						<telerik:GridViewDataColumn Header="OrderDate"
+													DataMemberBinding="{Binding OrderDate, StringFormat=d}" />
+					</telerik:RadGridView.Columns>
+				</telerik:RadGridView>
+			</DataTemplate>
+			<Examples:CountryConveter x:Key="converter" />
+			<Examples:ConditionalDataTemplateSelector x:Key="selector"
+													  ConditionConverter="{StaticResource converter}">
+				<Examples:ConditionalDataTemplateSelector.Rules>
+					<Examples:ConditionalDataTemplateRule DataTemplate="{StaticResource MexicoTemplate}">
+						<Examples:ConditionalDataTemplateRule.Value>
+							<sys:Boolean>True</sys:Boolean>
+						</Examples:ConditionalDataTemplateRule.Value>
+					</Examples:ConditionalDataTemplateRule>
+					<Examples:ConditionalDataTemplateRule DataTemplate="{StaticResource OtherCountriesTemplate}">
+						<Examples:ConditionalDataTemplateRule.Value>
+							<sys:Boolean>False</sys:Boolean>
+						</Examples:ConditionalDataTemplateRule.Value>
+					</Examples:ConditionalDataTemplateRule>
+				</Examples:ConditionalDataTemplateSelector.Rules>
+			</Examples:ConditionalDataTemplateSelector>
+		</Grid.Resources>
+		<telerik:RadGridView x:Name="RadGridView1"
+							 HierarchyChildTemplateSelector="{StaticResource selector}"
+							 ItemsSource="{Binding Customers}"
+							 RowIndicatorVisibility="Collapsed"
+							 CanUserFreezeColumns="False"
+							 AutoGenerateColumns="False">
+			<telerik:RadGridView.ChildTableDefinitions>
+				<telerik:GridViewTableDefinition />
+			</telerik:RadGridView.ChildTableDefinitions>
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn Header="CustomerID"
+											DataMemberBinding="{Binding CustomerID}"
+											Width="100" />
+				<telerik:GridViewDataColumn Header="CompanyName"
+											DataMemberBinding="{Binding CompanyName}"
+											Width="*" />
+				<telerik:GridViewDataColumn Header="ContactName"
+											DataMemberBinding="{Binding ContactName}"
+											Width="200" />
+				<telerik:GridViewDataColumn Header="Country"
+											DataMemberBinding="{Binding Country}"
+											Width="200" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+</Examples:GridViewExample>

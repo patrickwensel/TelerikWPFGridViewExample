@@ -1,0 +1,2 @@
+﻿This example illustrates how to apply template conditionally for RadGridView cells tooltip using ToolTipTemplateSelector column property.
+Tip: hover the UnitPrice column to see different templates applied depending on whether the price is below or above $30

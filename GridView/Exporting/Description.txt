@@ -1,0 +1,1 @@
+﻿This example demonstrates how to use Telerik GridView Extension methods for exporting data to <b>Excel</b>, <b>Word</b> and <b>CSV</b> documents.

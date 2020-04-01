@@ -1,0 +1,81 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.GridLines.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.GridLines"
+						  VerticalAlignment="Center"
+						  HorizontalAlignment="Center">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Employees"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Examples:GridViewExample.Resources>
+		<local:MyModel x:Key="context" />
+	</Examples:GridViewExample.Resources>
+	<Grid Name="LayoutRoot">
+        <telerik:RadGridView x:Name="RadGridView1" GroupRenderMode="Flat"
+							 AutoGenerateColumns="False"
+						     Height="500"
+							 Width="600"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 ItemsSource="{Binding Employees}"
+							 GridLinesVisibility="{Binding SelectedItem.Value, Source={StaticResource context}}"
+							 VerticalGridLinesBrush="{Binding VerticalGridLinesBrush, Source={StaticResource context}, Mode=TwoWay}"
+							 HorizontalGridLinesBrush="{Binding HorizontalGridLinesBrush, Source={StaticResource context}, Mode=TwoWay}">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn Header="Employee ID"
+											DataMemberBinding="{Binding EmployeeID}"
+											Width="120" />
+				<telerik:GridViewDataColumn Header="First Name"
+											DataMemberBinding="{Binding FirstName}"
+											Width="120" />
+				<telerik:GridViewDataColumn Header="Last Name"
+											DataMemberBinding="{Binding LastName}"
+											Width="120" />
+				<telerik:GridViewDataColumn Header="City"
+											DataMemberBinding="{Binding City}"
+											Width="120" />
+				<telerik:GridViewDataColumn Header="Country"
+											DataMemberBinding="{Binding Country}"
+											Width="*" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+	<telerikQuickStart:QuickStart.ConfigurationPanel>
+		<StackPanel Margin="3">
+			<TextBlock Text="GridLines Visibility Mode:"
+					   Foreground="#FF5A5A5A" />
+			<telerik:RadComboBox ItemsSource="{Binding GridLines, Source={StaticResource context}}"
+								 DisplayMemberPath="DisplayName"
+								 SelectedItem="{Binding SelectedItem, Source={StaticResource context}, Mode=TwoWay}"
+								 SelectedIndex="0" />
+			<TextBlock Text="GridLines Brush:"
+					   Foreground="#FF5A5A5A"
+					   Margin="0,10,0,0" />
+			<StackPanel Orientation="Horizontal"
+						Margin="0,2">
+				<telerik:RadColorPicker x:Name="VerticalGridLinesColorPicker"
+										SelectedColor="{Binding VerticalGridLinesColor, Source={StaticResource context}, Mode=TwoWay}"
+										MainPalette="Office"
+										VerticalAlignment="Center"
+										HorizontalAlignment="Right" />
+				<TextBlock Text="Vertical GridLines"
+						   VerticalAlignment="Center"
+						   Margin="3,0,0,0" />
+			</StackPanel>
+			<StackPanel Orientation="Horizontal"
+						Margin="0,2">
+				<telerik:RadColorPicker x:Name="HorizontalGridLinesColorPicker"
+										SelectedColor="{Binding HorizontalGridLinesColor, Source={StaticResource context}, Mode=TwoWay}"
+										VerticalAlignment="Center"
+										HorizontalAlignment="Right" />
+				<TextBlock Text="Horizontal GridLines"
+						   VerticalAlignment="Center"
+						   Margin="3,0,0,0" />
+			</StackPanel>
+		</StackPanel>
+	</telerikQuickStart:QuickStart.ConfigurationPanel>
+</Examples:GridViewExample>

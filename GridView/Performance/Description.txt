@@ -1,0 +1,1 @@
+﻿Telerik GridView grants outstanding performance and loads a milion records of data in miliseconds.

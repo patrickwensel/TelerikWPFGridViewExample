@@ -1,0 +1,68 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.ClickEvents.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.ClickEvents"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Products"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<UserControl.Resources>
+		<local:ClassNameConverter x:Key="classNameConverter" />
+	</UserControl.Resources>
+	<Grid>
+		<telerik:RadGridView x:Name="RadGridView1"
+							 ItemsSource="{Binding RandomProducts}"
+							 AutoGenerateColumns="False"
+                             GroupRenderMode="Flat"
+							 CanUserFreezeColumns="False"
+							 IsReadOnly="True"
+							 RowIndicatorVisibility="Collapsed"
+							 local:ConfigurationPanelBehavior.Panel="{Binding ElementName=TopRightStackPanel}">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding ID}"
+											Width="60" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Name}"
+											Width="*" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding UnitPrice}"
+											Header="Unit Price"
+											Width="100" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Date}"
+											Width="170" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Discontinued}"
+											Width="130" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+	<telerikQuickStart:QuickStart.ConfigurationPanel>
+		<StackPanel x:Name="TopRightStackPanel"
+					Margin="3">
+			<TextBlock Text="Cell Double Click Details" />
+			<TextBlock Text="Cell Column Name: "
+					   Margin="0,10,0,0" />
+			<TextBlock x:Name="CellColumnText"
+					   Text="{Binding ClickedCell.DataColumn.UniqueName}" />
+			<TextBlock Text="Cell Customer Name: "
+					   Margin="0,10,0,0" />
+			<TextBlock x:Name="CellDataText"
+					   Text="{Binding ClickedCell.DataContext.Name}" />
+			<TextBlock Text="Cell Type: "
+					   Margin="0,10,0,0" />
+			<TextBlock x:Name="CellTypeText"
+					   Text="{Binding ClickedCell, Converter={StaticResource classNameConverter}}" />
+			<TextBlock Text="Activated Rows History"
+					   Margin="0,10,0,0" />
+			<ListBox x:Name="listBoxActivatedRows"
+					 ItemsSource="{Binding ActivatedRows}"
+					 Height="150">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Name}" />
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</StackPanel>
+	</telerikQuickStart:QuickStart.ConfigurationPanel>
+</Examples:GridViewExample>

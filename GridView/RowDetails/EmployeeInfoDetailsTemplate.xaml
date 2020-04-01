@@ -1,0 +1,149 @@
+<UserControl x:Class="Telerik.Windows.Examples.GridView.RowDetails.EmployeeInfoDetailsTemplate"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<UserControl.Resources>
+		<telerik:BinaryImageConverter x:Key="converter" />
+	</UserControl.Resources>
+	<Grid Width="Auto"
+		  HorizontalAlignment="Stretch">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="20" />
+			<RowDefinition Height="20" />
+			<RowDefinition Height="20" />
+			<RowDefinition Height="20" />
+			<RowDefinition Height="20" />
+			<RowDefinition Height="20" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="150" />
+			<ColumnDefinition Width="10" />
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<Border Grid.Column="0"
+				Grid.RowSpan="6"
+				Grid.Row="0"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Stretch"
+				Height="100"
+				Width="100"
+				Margin="15,0"
+				BorderThickness="1"
+				CornerRadius="1"
+				BorderBrush="{telerik:Windows8Resource ResourceKey=BasicBrush}">
+			<Border>
+				<Image Source="{Binding Picture, Converter={StaticResource converter}}"
+					   HorizontalAlignment="Center"
+					   VerticalAlignment="Center"></Image>
+			</Border>
+		</Border>
+		<TextBlock Text="Last Name: "
+				   Margin="5,0,0,0"
+				   FontWeight="Bold"
+				   Grid.Row="1"
+				   Grid.Column="1"
+				   VerticalAlignment="Center"
+				   HorizontalAlignment="Left" />
+		<TextBlock Text="{Binding LastName}"
+				   Margin="5,0,0,0"
+				   Grid.Row="1"
+				   Grid.Column="2"
+				   VerticalAlignment="Center"
+				   HorizontalAlignment="Left" />
+		<TextBlock Text="First Name: "
+				   Margin="5,0,0,0"
+				   FontWeight="Bold"
+				   Grid.Row="2"
+				   Grid.Column="1"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Center" />
+		<TextBlock Text="{Binding FirstName}"
+				   Margin="5,0,0,0"
+				   Grid.Row="2"
+				   Grid.Column="2"
+				   VerticalAlignment="Center"
+				   HorizontalAlignment="Left" />
+		<TextBlock Text="Title: "
+				   Margin="5,0,0,0"
+				   FontWeight="Bold"
+				   Grid.Row="3"
+				   Grid.Column="1"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Center" />
+		<TextBlock Text="{Binding Title}"
+				   Margin="5,0,0,0"
+				   Grid.Row="3"
+				   Grid.Column="2"
+				   VerticalAlignment="Center"
+				   HorizontalAlignment="Left" />
+		<TextBlock Text="City: "
+				   Margin="5,0,0,0"
+				   FontWeight="Bold"
+				   Grid.Row="4"
+				   Grid.Column="1"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Center" />
+		<TextBlock Text="{Binding City}"
+				   Margin="5,0,0,0"
+				   Grid.Row="4"
+				   Grid.Column="2"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Center" />
+		<Border Grid.Column="3"
+				Grid.Row="0"
+				Grid.RowSpan="6"
+				Width="1"
+				Background="{telerik:Windows8Resource ResourceKey=BasicBrush}"
+				VerticalAlignment="Stretch"
+				HorizontalAlignment="Left"
+				Margin="0,10" />
+		<TextBlock Text="Phone: "
+				   Margin="5,0,0,0"
+				   FontWeight="Bold"
+				   Grid.Row="2"
+				   Grid.Column="4"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Center" />
+		<TextBlock Text="{Binding HomePhone}"
+				   Margin="5,0,0,0"
+				   Grid.Row="2"
+				   Grid.Column="5"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Center" />
+		<TextBlock Text="HireDate: "
+				   Margin="5,0,0,0"
+				   FontWeight="Bold"
+				   Grid.Row="1"
+				   Grid.Column="4"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Center" />
+		<TextBlock Text="{Binding HireDate}"
+				   Margin="5,0,0,0"
+				   Grid.Row="1"
+				   Grid.Column="5"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Center" />
+		<TextBlock Text="Address: "
+				   Margin="5,0,0,0"
+				   FontWeight="Bold"
+				   Grid.Row="3"
+				   Grid.Column="4"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Center" />
+		<StackPanel Orientation="Horizontal"
+					Grid.Row="3"
+					Grid.Column="5"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					Grid.RowSpan="2"
+					Margin="0,3,0,0">
+			<TextBlock Text="{Binding Address}"
+					   Margin="5,0,0,0" />
+			<TextBlock Text=", " />
+			<TextBlock Text="{Binding PostalCode}" />
+		</StackPanel>
+	</Grid>
+</UserControl>

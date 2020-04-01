@@ -1,0 +1,1 @@
+﻿This example demonstrates how to define column groups and display the grouped columns with common / merged headers.

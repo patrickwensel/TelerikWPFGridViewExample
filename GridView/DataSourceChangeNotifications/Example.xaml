@@ -1,0 +1,88 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.DataSourceChangeNotifications.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.DataSourceChangeNotifications"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common"
+						  x:Name="DataSourceChangeNotificationsExample">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Corporate Directory"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Examples:GridViewExample.Resources>
+		<local:MyDataContext x:Key="context" />
+	</Examples:GridViewExample.Resources>
+	<Grid>
+        <telerik:RadGridView x:Name="RadGridView1"
+                             GroupRenderMode="Flat"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 ItemsSource="{Binding ItemsSource, Source={StaticResource context}}"
+							 AutoGenerateColumns="False">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding CompanyName}"
+											Header="Company Name"
+											Width="*" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding ContactName}"
+											Header="Contact Name"
+											Width="120" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding ContactTitle}"
+											Header="Contact Title"
+											Width="120" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Country}"
+											Header="Country"
+											Width="100" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding City}"
+											Header="City"
+											Width="100" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Phone}"
+											Header="Phone" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+	<telerikQuickStart:QuickStart.ConfigurationPanel>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<StackPanel Margin="3"
+						DataContext="{Binding ItemsSource.CurrentItem, Source={StaticResource context}}">
+				<TextBlock Text="Company Name:" />
+				<TextBox x:Name="CompanyName"
+						 Margin="0,2"
+						 Text="{Binding CompanyName, Mode=TwoWay}" />
+				<TextBlock Margin="0,5,0,0"
+						   Text="Contact Name:" />
+				<TextBox x:Name="ContactName"
+						 Margin="0,2"
+						 Text="{Binding ContactName, Mode=TwoWay}" />
+				<TextBlock Margin="0,5,0,0"
+						   Text="Contact Title:" />
+				<TextBox x:Name="ContactTitle"
+						 Margin="0,2"
+						 Text="{Binding ContactTitle, Mode=TwoWay}" />
+				<TextBlock  Margin="0,5,0,0"
+							Text="Country:" />
+				<TextBox x:Name="Country"
+						 Margin="0,2"
+						 Text="{Binding Country, Mode=TwoWay}" />
+				<TextBlock  Margin="0,5,0,0"
+							Text="City:" />
+				<TextBox x:Name="City"
+						 Margin="0,2"
+						 Text="{Binding City, Mode=TwoWay}" />
+				<TextBlock Margin="0,5,0,0"
+						   Text="Phone:" />
+				<TextBox x:Name="Phone"
+						 Margin="0,2"
+						 Text="{Binding Phone, Mode=TwoWay}" />
+			</StackPanel>
+			<telerik:RadButton Command="{Binding DeleteCurrentCommand, Source={StaticResource context}}"
+							   Content="Delete Current Record"
+							   Margin="0,10,0,0"
+							   Grid.Row="1" />
+		</Grid>
+	</telerikQuickStart:QuickStart.ConfigurationPanel>
+</Examples:GridViewExample>

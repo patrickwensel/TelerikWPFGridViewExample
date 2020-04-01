@@ -1,0 +1,22 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.UIVirtualization.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.UIVirtualization"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:behavior="clr-namespace:Telerik.Windows.Examples.GridView"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<Examples:GridViewExample.Resources>
+		<local:MyModel x:Key="model" />
+	</Examples:GridViewExample.Resources>
+	<Grid>
+        <telerik:RadGridView x:Name="RadGridView1" GroupRenderMode="Flat"
+							 ShowGroupPanel="False"
+							 CanUserResizeColumns="False"
+							 CanUserFreezeColumns="False"
+							 ItemsSource="{Binding Items, Source={StaticResource model}}"
+							 behavior:MyColumnsBindingBehavior.Columns="{Binding Columns, Source={StaticResource model}}"
+							 AutoGenerateColumns="False"
+							 IsSynchronizedWithCurrentItem="True" />
+	</Grid>
+</Examples:GridViewExample>

@@ -1,0 +1,57 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.MergedColumnHeaders.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.MergedColumnHeaders"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<Examples:GridViewExample.Resources>
+		<local:Vehicle x:Key="DataContext" />
+	</Examples:GridViewExample.Resources>
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Cars park"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Grid Name="LayoutRoot">
+        <telerik:RadGridView x:Name="RadGridView" GroupRenderMode="Flat"
+							 GridLinesVisibility="Vertical"
+							 ColumnWidth="100"
+							 CanUserFreezeColumns="False"
+							 AutoGenerateColumns="False"
+							 AutoExpandGroups="True"
+							 IsFilteringAllowed="False"
+							 ShowGroupPanel="False"
+							 RowIndicatorVisibility="Collapsed"
+							 ItemsSource="{Binding SampleList, Source={StaticResource DataContext}}">
+			<telerik:RadGridView.ColumnGroups>
+				<telerik:GridViewColumnGroup  Name="Vehicle"
+											  Header="Vehicle" />
+				<telerik:GridViewColumnGroup  Name="Engine"
+											  Header="Engine" />
+				<telerik:GridViewColumnGroup  Name="Price"
+											  Header="Price" />
+			</telerik:RadGridView.ColumnGroups>
+			<telerik:RadGridView.GroupDescriptors>
+				<telerik:GroupDescriptor Member="Category">
+					<telerik:GroupDescriptor.AggregateFunctions>
+						<telerik:CountFunction />
+					</telerik:GroupDescriptor.AggregateFunctions>
+				</telerik:GroupDescriptor>
+			</telerik:RadGridView.GroupDescriptors>
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn  DataMemberBinding="{Binding Make}"
+											 ColumnGroupName="Vehicle" />
+				<telerik:GridViewDataColumn  DataMemberBinding="{Binding Model}"
+											 ColumnGroupName="Vehicle" />
+				<telerik:GridViewDataColumn  DataMemberBinding="{Binding Variant}"
+											 ColumnGroupName="Vehicle" />
+				<telerik:GridViewDataColumn  DataMemberBinding="{Binding Power}"
+											 ColumnGroupName="Engine" />
+				<telerik:GridViewDataColumn  DataMemberBinding="{Binding Fuel}"
+											 ColumnGroupName="Engine" />
+				<telerik:GridViewDataColumn  DataMemberBinding="{Binding USD}"
+											 ColumnGroupName="Price" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+</Examples:GridViewExample>

@@ -1,0 +1,116 @@
+﻿<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.TextSearch.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.TextSearch"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Orders"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Grid>
+		<Grid.Resources>
+			<telerik:ColorToBrushConverter x:Key="ColorToBrushConverter" />
+            <telerik:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        </Grid.Resources>
+		
+		<telerik:RadGridView x:Name="RadGridView1" GroupRenderMode="Flat"
+							 ItemsSource="{Binding Orders}"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 IsFilteringAllowed="False"
+							 AutoGenerateColumns="False"
+                             ColumnWidth="*"
+							 CurrentColumn="{Binding SelectedItem, ElementName=ComboBox1, Mode=TwoWay}"
+                             CanUserSearch="{Binding ElementName=canUserSearch, 
+													   Path=IsChecked, 
+													   Mode=TwoWay}"
+							 ShowSearchPanel="{Binding ElementName=showSearchPanelCheckBox, 
+													   Path=IsChecked, 
+													   Mode=TwoWay}"
+							 SearchPanelCloseButtonVisibility="{Binding ElementName=showSearchPanelCloseButton,
+																		Path=IsChecked,
+																		Converter={StaticResource BooleanToVisibilityConverter},
+																		Mode=TwoWay}"
+							 IsSearchingDeferred="{Binding ElementName=isSearchingDeferredCheckBox, 
+													   Path=IsChecked, 
+													   Mode=TwoWay}"
+							 SearchPanelBackground="{Binding ElementName=searchPanelBackgroundColorPicker,
+															 Path=SelectedColor,
+															 Converter={StaticResource ColorToBrushConverter},
+															 Mode=TwoWay}"
+							 SearchPanelForeground="{Binding ElementName=searchPanelForegroundColorPicker,
+															 Path=SelectedColor,
+															 Converter={StaticResource ColorToBrushConverter},
+															 Mode=TwoWay}"
+                             CanUserSearchInHiddenColumns="{Binding ElementName=canUserSearchInHiddenColumnsCheckBox, 
+													   Path=IsChecked, 
+													   Mode=TwoWay}">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding OrderID}" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CustomerID}" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Freight, StringFormat=c2}" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding ShipVia}" Header="Ship Via" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding ShipName}" Header="Ship Name" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding ShipCity}" Header="Ship City" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding ShipCountry}" Header="Ship Country" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+	
+	<telerikQuickStart:QuickStart.ConfigurationPanel>
+		<StackPanel Margin="3">
+            <TextBlock Text="SearchPanel settings:" Margin="0 3 0 3" />
+            <CheckBox Name="showSearchPanelCheckBox"
+					  Content="Show search panel"
+					  IsChecked="True"
+					  Margin="0 2" />
+            <CheckBox Name="showSearchPanelCloseButton"
+					  Content="Show search panel close button"
+					  IsChecked="True"
+					  Margin="0 2" />
+            <CheckBox Name="canUserSearch"
+					  Content="Enable Ctrl + F shortcut"
+					  IsChecked="True"
+					  Margin="0 2" />
+            <CheckBox Name="isSearchingDeferredCheckBox"
+					  Content="Deferred searching"
+					  Margin="0 2" />
+            <CheckBox Name="canUserSearchInHiddenColumnsCheckBox"
+					  Content="Searching in hidden columns"
+					  Margin="0 2" />
+            <TextBlock Text="Column-specific settings:"  Margin="0 15 0 3" />
+            <telerik:RadComboBox x:Name="ComboBox1"
+								 ItemsSource="{Binding Columns, Mode=OneWay}"
+								 SelectedIndex="0"
+								 DisplayMemberPath="Header" 
+                                 Margin="0 2" />
+            <CheckBox IsChecked="{Binding CurrentColumn.IsSearchable, Mode=TwoWay}"
+					  Content="IsSearchable"
+					  Margin="0 2" />
+            <CheckBox IsChecked="{Binding CurrentColumn.IsVisible, Mode=TwoWay}"
+					  Content="IsVisible"
+					  Margin="0 2" />
+
+
+            <TextBlock Text="SearchPanel properties:"
+					   Margin="0 15 0 3" />
+			<StackPanel Orientation="Horizontal" Margin="5 1">
+				<telerik:RadColorPicker x:Name="searchPanelBackgroundColorPicker"
+										VerticalAlignment="Center"		
+										MainPalette="Office" 
+										Margin="0 2 3 0" />
+				<TextBlock Text="Background" 
+						   VerticalAlignment="Center" Margin="5 0" />
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Margin="5 1">
+				<telerik:RadColorPicker x:Name="searchPanelForegroundColorPicker"
+										VerticalAlignment="Center" 
+										Margin="0 0 3 0" />
+				<TextBlock Text="Foreground"
+						   VerticalAlignment="Center" Margin="5 0" />
+			</StackPanel>
+		</StackPanel>
+	</telerikQuickStart:QuickStart.ConfigurationPanel>
+</Examples:GridViewExample>

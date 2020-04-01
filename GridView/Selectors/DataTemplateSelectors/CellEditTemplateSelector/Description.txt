@@ -1,0 +1,2 @@
+﻿This example illustrates how to apply template conditionally for RadGridView cells in edit mode using CellEditTemplateSelector column property.
+Tip: Try editing a unit price above $30 to see the difference.

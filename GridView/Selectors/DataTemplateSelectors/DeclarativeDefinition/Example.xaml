@@ -1,0 +1,46 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.Selectors.DataTemplateSelectors.DeclarativeDefinition.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Products"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Grid>
+        <telerik:RadGridView x:Name="RadGridView1" GroupRenderMode="Flat"
+							 ItemsSource="{Binding Products}"
+							 CanUserFreezeColumns="False"
+							 AutoGenerateColumns="False">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn Header="ProductID"
+											DataMemberBinding="{Binding ProductID}" />
+				<telerik:GridViewDataColumn Header="ProductName"
+											DataMemberBinding="{Binding ProductName}" />
+				<telerik:GridViewDataColumn Header="UnitPrice"
+											DataMemberBinding="{Binding UnitPrice, StringFormat=c}">
+					<telerik:GridViewDataColumn.CellTemplateSelector>
+						<telerik:ConditionalDataTemplateSelector>
+							<telerik:DataTemplateRule Condition="UnitPrice > 10">
+								<DataTemplate>
+									<Border Background="{telerik:Windows8Resource ResourceKey=AccentBrush}">
+										<TextBlock Text="{Binding UnitPrice, StringFormat=c}"
+												   Foreground="{telerik:Windows8Resource ResourceKey=MainBrush}" />
+									</Border>
+								</DataTemplate>
+							</telerik:DataTemplateRule>
+							<telerik:DataTemplateRule Condition="UnitPrice &lt;= 10">
+								<DataTemplate>
+									<TextBlock Text="{Binding UnitPrice, StringFormat=c}" />
+								</DataTemplate>
+							</telerik:DataTemplateRule>
+						</telerik:ConditionalDataTemplateSelector>
+					</telerik:GridViewDataColumn.CellTemplateSelector>
+				</telerik:GridViewDataColumn>
+				<telerik:GridViewDataColumn Header="UnitsInStock"
+											DataMemberBinding="{Binding UnitsInStock}" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+</Examples:GridViewExample>

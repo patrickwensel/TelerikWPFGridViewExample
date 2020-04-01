@@ -1,0 +1,1 @@
+﻿This examples illustrates server side sorting, grouping, paging and filtering with RadGridView control and Entity Framework.

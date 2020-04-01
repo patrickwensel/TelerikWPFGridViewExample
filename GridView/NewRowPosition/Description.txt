@@ -1,0 +1,1 @@
+﻿This example demonstrates how to control the position of the GridViewNewRow by using the property NewRowPosition.

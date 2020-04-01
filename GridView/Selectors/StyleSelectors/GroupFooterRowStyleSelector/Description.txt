@@ -1,0 +1,1 @@
+﻿This example illustrates how to style conditionally RadGridView group footer rows using GroupFooterRowStyleSelector GridViewDataControl property.

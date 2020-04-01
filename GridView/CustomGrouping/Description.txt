@@ -1,0 +1,2 @@
+﻿This example demonstrates the custom grouping capabilities of the Telerik GridView. The Grouping event is fired every time when new grouping criteria is about to be applied by the user. That allows the programmer to alter the grouping behaviour. 
+The demo shows how custom grouping is applied when the "Date" column header is grouped.

@@ -1,0 +1,3 @@
+﻿This example illustrates data validation while editing data inside the Telerik GridView control.
+
+RadGridView fires events which you can handle and add custom logic to validate the data entered. The example handles events using the attached event syntax. It employs different code to validate the entered value depending on the column to which the edited cell belongs. You can see the explanation of the validation rules in the right-hand pane. The pane also displays the result of the validation performed. To trigger data validation and commit your changes press Enter or click another cell.

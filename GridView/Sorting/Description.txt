@@ -1,0 +1,2 @@
+﻿This example demonstrates how the sorting in the UI for specific column can be disabled - by setting the <b>IsSortable</b> property of that column to false. 
+The sorting will be unavailable to the user and at the same time the developer will be allowed to sort from the code behind. That enables the usage of external controls as demonstrated with the <b>ComboBoxes</b> and <b>RadioButtons</b>.

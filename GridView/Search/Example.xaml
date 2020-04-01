@@ -1,0 +1,41 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.Search.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.Search"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common"
+						  VerticalAlignment="Center"
+						  HorizontalAlignment="Center">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Orders"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Grid>
+        <telerik:RadGridView Name="RadGridView1" GroupRenderMode="Flat"
+							 ItemsSource="{Binding Orders}"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 IsFilteringAllowed="False"
+							 AutoGenerateColumns="False"
+							 Height="500"
+							 Width="748"
+							 local:CustomFilterBehavior.TextBox="{Binding ElementName=textBoxFilterValue}">
+			<telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding OrderID}" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CustomerID}" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Freight, StringFormat=c2}" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ShipVia}" Header="Ship Via" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ShipName}" Header="Ship Name" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ShipCity}" Header="Ship City" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ShipCountry}" Header="Ship Country" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+	<telerikQuickStart:QuickStart.ConfigurationPanel>
+		<StackPanel Margin="3">
+			<TextBlock Text="Enter search term: " />
+			<TextBox x:Name="textBoxFilterValue" />
+		</StackPanel>
+	</telerikQuickStart:QuickStart.ConfigurationPanel>
+</Examples:GridViewExample>

@@ -1,0 +1,61 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.Selectors.DataTemplateSelectors.CellTemplateSelector.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:sys="clr-namespace:System;assembly=mscorlib"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Products"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+	<Grid>
+		<Grid.Resources>
+			<DataTemplate x:Key="HighUnitPriceTemplate">
+				<Border Background="{telerik:Windows8Resource ResourceKey=AccentBrush}">
+					<TextBlock Foreground="{telerik:Windows8Resource ResourceKey=MainBrush}"
+							   Text="{Binding UnitPrice, StringFormat=c}" />
+				</Border>
+			</DataTemplate>
+			<DataTemplate x:Key="LowUnitPriceTemplate">
+				<TextBlock Text="{Binding UnitPrice, StringFormat=c}" />
+			</DataTemplate>
+			<Examples:UnitPriceConveter x:Key="converter" />
+			<Examples:ConditionalDataTemplateSelector x:Key="selector"
+													  ConditionConverter="{StaticResource converter}">
+				<Examples:ConditionalDataTemplateSelector.Rules>
+					<Examples:ConditionalDataTemplateRule DataTemplate="{StaticResource HighUnitPriceTemplate}">
+						<Examples:ConditionalDataTemplateRule.Value>
+							<sys:Boolean>True</sys:Boolean>
+						</Examples:ConditionalDataTemplateRule.Value>
+					</Examples:ConditionalDataTemplateRule>
+					<Examples:ConditionalDataTemplateRule DataTemplate="{StaticResource LowUnitPriceTemplate}">
+						<Examples:ConditionalDataTemplateRule.Value>
+							<sys:Boolean>False</sys:Boolean>
+						</Examples:ConditionalDataTemplateRule.Value>
+					</Examples:ConditionalDataTemplateRule>
+				</Examples:ConditionalDataTemplateSelector.Rules>
+			</Examples:ConditionalDataTemplateSelector>
+		</Grid.Resources>
+        <telerik:RadGridView x:Name="RadGridView1" GroupRenderMode="Flat"
+							 ItemsSource="{Binding Products}"
+							 AutoGenerateColumns="False"
+							 CanUserFreezeColumns="False">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn Header="ProductID"
+											DataMemberBinding="{Binding ProductID}"
+											Width="60" />
+				<telerik:GridViewDataColumn Header="ProductName"
+											DataMemberBinding="{Binding ProductName}"
+											Width="*" />
+				<telerik:GridViewDataColumn Header="UnitPrice"
+											DataMemberBinding="{Binding UnitPrice, StringFormat=c}"
+											Width="150"
+											CellTemplateSelector="{StaticResource selector}" />
+				<telerik:GridViewDataColumn Header="UnitsInStock"
+											DataMemberBinding="{Binding UnitsInStock}"
+											Width="150" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+</Examples:GridViewExample>

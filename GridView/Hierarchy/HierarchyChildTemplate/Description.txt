@@ -1,0 +1,1 @@
+﻿This example shows how to define a custom hierarchy template. Using <b>HierarchyChildTemplate</b> you can customize your child tables.

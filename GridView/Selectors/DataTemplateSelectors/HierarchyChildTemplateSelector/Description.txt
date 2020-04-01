@@ -1,0 +1,2 @@
+﻿This example illustrates how to apply template conditionally for RadGridView hierarchy using HierarchyChildTemplateSelector GridViewDataControl property.
+Tip: the child grid of the customers from Mexico is readonly. The rule is determined by the CountryConverter

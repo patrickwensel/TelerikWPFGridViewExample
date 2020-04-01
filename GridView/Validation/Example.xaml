@@ -1,0 +1,63 @@
+<Examples:GridViewExample x:Class="Telerik.Windows.Examples.GridView.Validation.Example"
+						  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:local="clr-namespace:Telerik.Windows.Examples.GridView.Validation"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common">
+	<Grid>
+        <telerik:RadGridView Name="RadGridView1" GroupRenderMode="Flat"
+							 CanUserFreezeColumns="False"
+							 ItemsSource="{Binding Customers}"
+							 AutoGenerateColumns="False"
+							 ActionOnLostFocus="CommitEdit"
+							 RowIndicatorVisibility="Collapsed"
+							 ToolTipService.ToolTip="Try entering an incorrect value in any cell."
+							 local:ValidationBehavior.IsValidationEnabled="True">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding ContactName}"
+											Header="Contact Name *" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Phone}"
+											Header="Phone *" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding CompanyName}"
+											Header="Company Name" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Address}"
+											Width="*" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding City}" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding PostalCode}"
+											Header="Postal Code *" />
+				<telerik:GridViewDataColumn DataMemberBinding="{Binding Country}"
+											Header="Country *" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+	<telerikQuickStart:QuickStart.ConfigurationPanel>
+		<StackPanel Margin="3">
+			<TextBlock Text="Contact Name:" />
+			<TextBlock Text="The name of the customer may contain only Latin letters and empty spaces and must start with a letter."
+					   TextWrapping="Wrap"
+					   Margin="0,0,0,10"
+					   HorizontalAlignment="Left"
+					   Foreground="#FF7C7C7C" />
+			<TextBlock Text="Phone: " />
+			<TextBlock Text="The phone must be in one of the formats X.X.X.X, Y or (X) Y, where X is a random sequence of numerals and Y is a random sequence of numerals, empty spaces and '-', which starts and ends with a numeral."
+					   TextWrapping="Wrap"
+					   Margin="0,0,0,10"
+					   HorizontalAlignment="Left"
+					   Foreground="#FF7C7C7C" />
+			<TextBlock Text="Postal Code: " />
+			<TextBlock Text="The postal code must not be empty."
+					   HorizontalAlignment="Left"
+					   TextWrapping="Wrap"
+					   Margin="0,0,0,10"
+					   Foreground="#FF7C7C7C" />
+			<TextBlock Text="Country: " />
+			<TextBlock Text="The name of the country must match the name of an existing one."
+					   HorizontalAlignment="Left"
+					   TextWrapping="Wrap"
+					   Margin="0,0,0,10"
+					   Foreground="#FF7C7C7C" />
+		</StackPanel>
+	</telerikQuickStart:QuickStart.ConfigurationPanel>
+</Examples:GridViewExample>
+

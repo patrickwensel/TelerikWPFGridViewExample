@@ -1,0 +1,3 @@
+﻿This example illustrates building a self-reference hierarchy within a GridView control. This feature allows you to display objects which have child objects of the same type, thus modelling a tree structure. For example, consider an Employee object with a collection of related employs that are its subordinates.
+
+You can build a self-reference hierarchy by creating a TableRelation and passing the name of the parent and child properties - EmployeeID and ReportsTo. Then you need to set the IsSelfReference property of the relation to true and assign the relation to the Relation property of the table definition (in our example, the master table definition). The final step needed to display the data is to bind to your data source.

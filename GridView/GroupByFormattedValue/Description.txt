@@ -1,0 +1,1 @@
+﻿This example demonstrates RadGridView's ability to group by the value of a Binding with an IValueConverter.

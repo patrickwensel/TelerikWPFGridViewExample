@@ -1,0 +1,3 @@
+﻿This example shows how Telerik GridView listens for changes made to the data source it is bound to. All changes of the data source are immediately applied to the grid. 
+
+Note that this feature is only supported for data sources that implement the <b>INotifyCollectionChanged</b> (for the entire grid) or <b>INotifyPropertyChanged</b> (for grid cells only) interfaces.

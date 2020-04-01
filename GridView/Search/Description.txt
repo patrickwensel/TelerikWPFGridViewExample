@@ -1,0 +1,4 @@
+﻿This example demonstrates the usage of the filtering API. The data engine allows developers to define their own declarative filter criteria. 
+In this demo a TextBox control is used to filter the grid as you type. In the code behind the CustomFilterDescriptor class inherits the 
+FilterDescriptorBase and overrides the CreateFilterExpression method to implement row filtering for the column set by the filter value given in the TextBox. 
+Using LINQ expression trees allows filtering logic to be passed to query provider for more efficient processing.

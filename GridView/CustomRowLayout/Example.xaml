@@ -1,0 +1,45 @@
+<Examples:GridViewExample xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						  xmlns:Examples="clr-namespace:Telerik.Windows.Examples"
+						  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+						  xmlns:telerikQuickStart="clr-namespace:Telerik.Windows.Controls.QuickStart;assembly=QuickStart.Common"
+						  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+						  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+						  mc:Ignorable="d"
+						  x:Class="Telerik.Windows.Examples.GridView.CustomRowLayout.Example">
+	<telerikQuickStart:QuickStart.ExampleHeader>
+		<TextBlock Text="Corporate Directory"
+				   Margin="8" />
+	</telerikQuickStart:QuickStart.ExampleHeader>
+    <Grid x:Name="root">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="GridViewRowStyle.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <telerik:RadGridView ItemsSource="{Binding Employees}" GroupRenderMode="Flat"
+							 CanUserFreezeColumns="False"
+							 ScrollMode="RealTime"
+							 IsReadOnly="True"
+							 x:Name="RadGridView1"
+							 GridLinesVisibility="None"
+							 AutoGenerateColumns="False">
+			<telerik:RadGridView.Columns>
+				<telerik:GridViewDataColumn Header="First Name"
+											DataMemberBinding="{Binding FirstName}"
+											IsFilterable="False"
+											Width="120" />
+				<telerik:GridViewDataColumn Header="Last Name"
+											DataMemberBinding="{Binding LastName}"
+											IsFilterable="False"
+											Width="120" />
+				<telerik:GridViewDataColumn Header="City"
+											DataMemberBinding="{Binding City}"
+											IsFilterable="False"
+											Width="120" />
+			</telerik:RadGridView.Columns>
+		</telerik:RadGridView>
+	</Grid>
+</Examples:GridViewExample>

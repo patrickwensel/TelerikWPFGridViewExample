@@ -1,0 +1,1 @@
+﻿This example illustrates the real-time data update with RadGridView.

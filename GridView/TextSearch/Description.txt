@@ -1,0 +1,4 @@
+﻿This example demonstrates the usage of the built-in searching mechanism of RadGridView. Once the ShowSearchPanel property is set to "true" or Search command is executed through Ctrl+F combination, the user will be able to search through the values in the grid. 
+The default behavior is to filter as you type, but it can be performed on pressing Enter in case IsSearchingDeferred property is set to "true". 
+By default, searching is applied to all visible columns. A given column can be excluded from the search by setting its IsSearchable property to "False". If the user wants to search in hidden columns can be achieved by setting the CanUserSearchInHiddenColumns property to "True".<br/>
+Searching can be extended by placing '+' or '-' sign in front of the value to include or exclude it from the results. If the user wants to filter on an exact phrase, he/she can wrap it in quotation.

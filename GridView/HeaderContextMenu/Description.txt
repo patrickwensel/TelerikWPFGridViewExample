@@ -1,0 +1,1 @@
+﻿This example demonstrates how to define custom context menu for the grid header cells with various options.

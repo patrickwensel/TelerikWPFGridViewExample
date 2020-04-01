@@ -1,0 +1,1 @@
+﻿This example illustrates how to apply template conditionally for RadGridView group headers using GroupHeaderTemplateSelector column property.

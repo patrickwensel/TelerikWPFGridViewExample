@@ -1,0 +1,7 @@
+﻿This example demonstrates how to provide custom controls to be used as the filtering UI of a column.
+
+Click on the funnels on the 'Founded' and 'Stadium Capacity columns' to see two such custom controls in action.
+
+Creating a custom filtering control is extremely easy. Create your user control and either derive from FilteringControlBase or implement the IFilteringControl interface. Place your custom logic in the Prepare method and update the IsActive property if you would like to have a visual indication for filtering.
+
+Once your custom filtering control is ready, simply assign it to the column's FilteringControl property.

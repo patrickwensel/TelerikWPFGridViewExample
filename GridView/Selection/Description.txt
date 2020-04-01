@@ -1,0 +1,3 @@
+﻿This example demonstrates the selection capabilities the GridView control. The control features three types of selection modes (Single, Multiple and Extended) as well as three unit types (FullRow, Cell, Mixed) to cover any scenario you might have.
+<br><br>
+In addition the CanUserSelectColumns property allows users to select whole column via convenient list available in the GroupPanel. This option is applicable only when SelectionMode is Multiple/Extended and SelectionUnit is Cell/Mixed.
