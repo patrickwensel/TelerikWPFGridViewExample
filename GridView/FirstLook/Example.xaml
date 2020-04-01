@@ -9,15 +9,19 @@
 		<TextBlock Text="Corporate Directory"
 				   Margin="8" />
 	</telerikQuickStart:QuickStart.ExampleHeader>
-	<Grid>
-		<Grid.Resources>
-			<telerik:BinaryImageConverter x:Key="converter" />
-			<local:RowStyleSelector x:Key="rowStyleSelector" />
-		</Grid.Resources>
-		<telerik:RadGridView x:Name="RadGridView1"
+    <Grid>
+        <Grid.Resources>
+            <telerik:BinaryImageConverter x:Key="converter" />
+            <local:RowStyleSelector x:Key="rowStyleSelector" />
+        </Grid.Resources>
+        <telerik:RadGridView x:Name="RadGridView1"
+                             MinHeight="400"
+                             MinWidth="800"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch"
 							 ItemsSource="{Binding Employees}"
 							 RowStyleSelector="{StaticResource rowStyleSelector}"
-							 Margin="0" GroupRenderMode="Flat"
+							 Margin="0"
 							 RowIndicatorVisibility="Collapsed"
 							 IsReadOnly="True"
                              ShowColumnSortIndexes="True"
